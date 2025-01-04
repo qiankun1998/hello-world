@@ -1,0 +1,35 @@
+.container {
+  width: 750rpx; 
+  height: 750rpx;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;   /* 水平居中 */
+  align-items: flex-start;   /* 垂直方向从顶部开始 */
+}
+
+.div_0 {
+  padding-top: 40rpx;
+  font-weight: bold;
+  /* text-align: center; */
+}
+
+.nickname {
+  /* justify-content: center; */
+  overflow: hidden; /* 隐藏溢出的内容 */
+  height: 70rpx;
+  align-items: center;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  text-align: center; /* 对文本的多行居中生效 */
+}
+
+
+
+.control-group {
+  margin-bottom: 20rpx;
+  width: 600rpx;
+}
+
+slider {
+  width: 100%;
+}

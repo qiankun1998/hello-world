@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="div_0">
+    <view class="nickname">卡片属性设置</view>
+    <view class="control-group">
+      <text>宽度: {{widthPercent}}%</text>
+      <slider min="{{minSizePercent}}" max="100" step="1" value="{{widthPercent}}" show-value bindchange="onWidthChange"></slider>
+    </view>
+    <view class="control-group">
+      <text>高度: {{heightPercent}}%</text>
+      <slider min="{{minSizePercent}}" max="100" step="1" value="{{heightPercent}}" show-value bindchange="onHeightChange"></slider>
+    </view>
+    <button bindtap="onBack">返回</button>
+  </view>
+</view>

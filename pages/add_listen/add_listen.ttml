@@ -1,0 +1,760 @@
+<view class="container">
+  <!-- 这里可以放入其他内容，比如按钮、文本等 -->
+  <!-- 最顶层盒子 -->
+  <view class="div_0">
+      <view class="nickname">创建监听条件</view>
+
+
+  
+      <view class="scroll-view-space">
+        <scroll-view scroll-y="{{true}}" scroll-with-animation="{{true}}" style="height: 620rpx;" upper-threshold="{{50}}" lower-threshold="{{50}}" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      
+            <view class="modal">
+
+
+              <span class="select_title">触发类型</span>
+              <view class="select_row">
+                <view class="select_area">
+                  <view class="{{selectedOption === '关注' ? 'option1 selected' : 'option1'}}" bindtap="handleSelect" data-option="关注">
+                    <text class="label">关注</text>
+                  </view>
+                  <view class="{{selectedOption === '点赞' ? 'option2 selected' : 'option2'}}" bindtap="handleSelect" data-option="点赞">
+                    <text class="label">点赞</text>
+                  </view>
+                  <view class="{{selectedOption === '送礼物' ? 'option3 selected' : 'option3'}}" bindtap="handleSelect" data-option="送礼物">
+                    <text class="label">送礼物</text>
+                  </view>
+                  <view class="{{selectedOption === '加入粉丝团' ? 'option4 selected' : 'option4'}}" bindtap="handleSelect" data-option="加入粉丝团">
+                    <text class="label">加入粉丝团</text>
+                  </view>
+                </view>
+              </view>
+
+              <view class="select_row">
+                <view class="select_area">
+                  
+                  <view class="{{selectedOption === '评论区抢答' ? 'option1 selected' : 'option1'}}" bindtap="handleSelect" data-option="评论区抢答">
+                    <text class="label">评论区抢答</text>
+                    <!-- 按照提前指定的相关问题让观众进行抢答，可指定哪些观众答题正确，前几位答题正确者有何奖励等等 -->
+                  </view>
+  
+                  <!-- <view class="{{selectedOption === '评论区抢答' ? 'duxFilter selected' : 'duxFilter'}}" bindtap="handleSelect" data-option="评论区抢答">
+                    <text class="label"></text>
+                  </view> -->
+  
+  
+                </view>
+              </view>
+              
+              
+                  <!-- 根据选项显示不同的组件 -->
+                  <!-- 进入直播间 -->
+                  <view wx:if="{{selectedOption === '关注'}}">
+
+                    
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">输入监听到该状态时显示的内容</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='例：感谢{头像|昵称}关注！' value="{{followInputText}}" bindinput="onFollowInputText">
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearFollowInputText"/>
+                        </view>
+                      </view>
+                    </view>
+
+
+
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">fansclub_level:粉丝团等级</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='请输入欢迎观众最低粉丝团等级（数值）' value="{{inputValue}}" bindinput="onInput">
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+
+
+                    
+
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">is_follow_anchor:观众是否已关注主播</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='该行为主要监听观众当前消息操作后的关注状态（是/否）' value="{{inputValue}}" bindinput="onInput">
+  
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+
+
+
+                    <!-- <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">rank:</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='不知道啥意思，待确认含义后添加需求' value="{{inputValue}}" bindinput="onInput">
+  
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view> 
+                    </view> -->
+
+                    <!-- :"vocvfwve0c]zDCr/srE99db/NA3vgkBlaxG2dPyetE8NLgDR05ktGcwXm8M=sec open id:" 000TE2IBg7sm9Rwy2GB138sgkhutux9o9ks" -->
+                    <!-- <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">sec_open_id(含义未知)</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='sec_open_id(含义未知)' value="{{inputValue}}" bindinput="onInput">
+
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view> -->
+
+
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">user_follow_action</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='1指关注行为,2指取消关注行为' value="{{inputValue}}" bindinput="onInput">
+  
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view> 
+                    </view>
+
+
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">user_privilege_level:观众荣誉等级</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='请输入欢迎观众最低荣誉等级（数值）' value="{{inputValue}}" bindinput="onInput">
+  
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+
+
+
+  
+                  </view>
+  
+                  <!-- 点赞 -->
+                  <view wx:if="{{selectedOption === '点赞'}}">
+
+                    <!-- <text>点赞相关信息：</text>
+                    <input type="number" placeholder="请输入点赞次数(需要累加并判断指定秒内用户未再次点赞)" />
+                    <button>提交点赞</button>
+                    <image src="/path/to/like-icon.png" style="width:30px;height:30px;" /> -->
+                    
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">fansclub_level:粉丝团等级</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='请输入欢迎观众最低粉丝团等级（数值）' value="{{inputValue}}" bindinput="onInput">
+  
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+                    
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">is_follow_anchor:观众是否已关注主播</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='该行为主要监听观众当前消息操作后的关注状态（是/否）' value="{{inputValue}}" bindinput="onInput">
+  
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+
+
+
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">like_num:点赞数</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='请输入点赞次数(需要累加并判断指定秒内用户未再次点赞)' value="{{inputValue}}" bindinput="onInput">
+  
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+
+                    <!-- <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">rank:</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='不知道啥意思，待确认含义后添加需求' value="{{inputValue}}" bindinput="onInput">
+  
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view> 
+                    </view> -->
+
+
+                  
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">user_privilege_level:观众荣誉等级</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='请输入欢迎观众最低荣誉等级（数值）' value="{{inputValue}}" bindinput="onInput">
+
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+
+
+                  </view>
+
+
+                  <!-- 送礼物 -->
+                  <view wx:if="{{selectedOption === '送礼物'}}">
+                    <view class="gift-selector" bindtap="showGiftPicker">
+                      <text>选择礼物类型：</text>
+                      <view class="selected-gift">
+                        <image class="gift-icon" src="{{selectedGift.gift_icon}}" alt="{{selectedGift.gift_name}}" wx:if="{{selectedGift.gift_icon}}"/>
+                        <text class="gift-name">{{selectedGift.gift_name || '请选择礼物'}}</text>
+                        <text class="gift-value">{{selectedGift.gift_value ? selectedGift.gift_value + ' 点' : ''}}</text>
+                      </view>
+                    </view>
+                    
+                    <!-- 自定义选择器 -->
+                    <view class="picker-container" wx:if="{{showPicker}}">
+                      <view class="picker-options">
+                        <block wx:for="{{giftPool}}" wx:key="sec_gift_id">
+                          <view class="picker-option" bindtap="handleGiftOptionSelect" data-gift="{{item}}">
+                            <image class="gift-icon" src="{{item.gift_icon}}" alt="{{item.gift_name}}"/>
+                            <text class="gift-name">{{item.gift_name}}</text>
+                            <text class="gift-value">{{item.gift_value}} 点</text>
+                          </view>
+                        </block>
+                      </view>
+                    </view>
+                    
+                    <button>送出礼物</button>
+                    
+                    
+                                      
+                  <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">fansclub_level:粉丝团等级</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='请输入欢迎观众最低粉丝团等级（数值）' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view>
+
+
+                  <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">gift_num:礼物赠送数量</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='请输入欢迎观众礼物赠送数量' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view>
+
+
+                  <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">is_follow_anchor:观众是否已关注主播</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='该行为主要监听观众当前消息操作后的关注状态（是/否）' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view>
+
+
+                  <!-- <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">rank:含义待确认</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='请输入欢迎观众最低粉丝团等级（数值）' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view> -->
+
+
+                  <!-- :"vocvfwve0c]zDCr/srE99db/NA3vgkBlaxG2dPyetE8NLgDR05ktGcwXm8M=sec open id:" 000TE2IBg7sm9Rwy2GB138sgkhutux9o9ks" -->
+                  <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">sec_gift_id</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='可通过此id获取用户赠送的礼物价值及类别' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view>
+                  
+
+                  <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">user_privilege_level:观众荣誉等级</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='请输入欢迎观众最低荣誉等级（数值）' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view>
+                  
+
+
+                  </view>
+
+  
+                  <!-- 加入粉丝团 -->
+                  <view wx:if="{{selectedOption === '加入粉丝团'}}">
+                  
+                  <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">fansclub_level:粉丝团等级</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='请输入欢迎观众最低粉丝团等级（数值）' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view>
+
+                  
+
+                  <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">fansclub_reason_type:类型未知</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='猜测为用户是否主动加入粉丝团' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view>
+
+                  <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">is_follow_anchor:观众是否已关注主播</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='该行为主要监听观众当前消息操作后的关注状态（是/否）' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view>
+
+                  <!-- <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">rank:</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='不知道啥意思，待确认含义后添加需求' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view> 
+                  </view> -->
+
+                  <!-- :"vocvfwve0c]zDCr/srE99db/NA3vgkBlaxG2dPyetE8NLgDR05ktGcwXm8M=sec open id:" 000TE2IBg7sm9Rwy2GB138sgkhutux9o9ks" -->
+                  <!-- <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">sec_open_id(含义未知)</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='sec_open_id(含义未知)' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view> -->
+
+
+                  <view class=input_div>
+                    <view class=input_row_up>
+                      <view class=input_title_area>
+                        <span class="input_title">user_privilege_level:观众荣誉等级</span>
+                      </view>
+                    </view>
+                    <view class=input_row_down>
+                      <view class=input_row>
+                          <input class="input_area" placeholder='请输入欢迎观众最低荣誉等级（数值）' value="{{inputValue}}" bindinput="onInput">
+
+                        </input>  
+                            <image 
+                              src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                              class="clear_button"
+                              bindtap="clearInput"/>
+                      </view>
+                    </view>
+                  </view>
+
+
+
+                  
+
+
+                  </view>
+
+  
+                  <!-- 评论 -->
+                  <view wx:if="{{selectedOption === '评论区抢答'}}">
+                    <!-- <text>评论内容：</text>
+                    <textarea placeholder="请输入评论内容"></textarea>
+                    <button>提交评论</button> -->
+
+
+
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">contend:评论文本</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='待监听评论文本' value="{{inputValue}}" bindinput="onInput">
+
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+
+
+
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">fansclub_level:粉丝团等级</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='请输入欢迎观众最低粉丝团等级（数值）' value="{{inputValue}}" bindinput="onInput">
+
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+
+                    
+
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">is_follow_anchor:观众是否已关注主播</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='该行为主要监听观众当前消息操作后的关注状态（是/否）' value="{{inputValue}}" bindinput="onInput">
+
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+
+                    <!-- <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">rank:</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='不知道啥意思，待确认含义后添加需求' value="{{inputValue}}" bindinput="onInput">
+
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view> 
+                    </view> -->
+
+                    <!-- :"vocvfwve0c]zDCr/srE99db/NA3vgkBlaxG2dPyetE8NLgDR05ktGcwXm8M=sec open id:" 000TE2IBg7sm9Rwy2GB138sgkhutux9o9ks" -->
+                    <!-- <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">sec_open_id(含义未知)</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='sec_open_id(含义未知)' value="{{inputValue}}" bindinput="onInput">
+
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view> -->
+
+
+                    <view class=input_div>
+                      <view class=input_row_up>
+                        <view class=input_title_area>
+                          <span class="input_title">fansclub_level:粉丝团等级</span>
+                        </view>
+                      </view>
+                      <view class=input_row_down>
+                        <view class=input_row>
+                            <input class="input_area" placeholder='请输入欢迎观众最低粉丝团等级（数值）' value="{{inputValue}}" bindinput="onInput">
+
+                          </input>  
+                              <image 
+                                src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                                class="clear_button"
+                                bindtap="clearInput"/>
+                        </view>
+                      </view>
+                    </view>
+
+
+
+
+
+
+
+
+                  </view>
+              
+  
+              
+            </view>
+        </scroll-view>
+        
+        </view>
+    
+        <view class="modal-footer">
+          <button class="confirm-button" bindtap="add">添加监听任务</button>
+        </view>
+    </view>
+
+
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

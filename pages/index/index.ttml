@@ -1,0 +1,70 @@
+
+
+
+
+<view class="container">
+    <!-- 这里可以放入其他内容，比如按钮、文本等 -->
+    <!-- 最顶层盒子 -->
+    <view class="view_0">
+      <view class="view_0_title">
+        <view class="nickname">监听计划列表</view>
+
+
+        <view class="modal-footer">
+          <button class="confirm-button" bindtap="card_settings">卡片设置</button>
+        </view>
+    
+        <view class="scroll-view-space">
+          <scroll-view scroll-y="{{true}}" scroll-with-animation="{{true}}" style="height: 520rpx;" upper-threshold="{{50}}" lower-threshold="{{50}}" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+              <!-- <view id="demo1" class="scroll-view-item demo-text-1">1</view> -->
+              <view class="modal">
+                  <checkbox-group class="task_all_group">
+                    <view
+                      data-index="{{index}}"
+                      tt:for="{{listen_lists}}"
+                      tt:for-item="item"
+                      tt:key="{{index}}"
+                      class="task">
+                      
+                      <view class="task_status_group">
+                        <view class="task_del_button_aera">
+                          <image 
+                            src="https://bin.misinguo.com/2024/09/upgit_20240911_1726047792.png"
+                            class="task_del_button"
+                            catchtap="deleteItem" 
+                            data-index="{{index}}"/>
+                        </view>
+
+                        <view class="task_group" bindtap="toggleState" data-index="{{index}}">
+                          <view class="task_status_area">
+                            <view class="task_status_group">
+                              <view class="{{item.isListening !== undefined && item.isListening ? 'task_status_image_isListening' : 'task_status_image_paused'}}"></view>
+                            </view>
+                            <!-- 显示正在监听或暂停监听 -->
+                            <span class="task_status">
+                              {{item.isListening !== undefined && item.isListening ? '正在监听' : '暂停监听'}}
+                            </span>
+                          </view>
+                        </view>
+
+                        <text class="task_type_name">{{item.selectedOption}}</text>
+                      </view>
+                    </view>
+                  </checkbox-group>
+
+              </view>
+          </scroll-view>
+
+
+        </view>
+      
+        <view class="modal-footer">
+            <button class="confirm-button" bindtap="addListen">添加监听任务</button>
+        </view>
+      </view>
+
+
+    </view>
+
+</view>
+    
